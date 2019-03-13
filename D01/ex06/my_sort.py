@@ -1,3 +1,5 @@
+from operator import itemgetter
+
 def my_sort():
     d = [
             ('Hendrix'  , '1942'),
@@ -15,10 +17,8 @@ def my_sort():
             ('Garcia'   , '1942'),
             ('White'    , '1975')
     ]
-    items = d.items()
-    comp = lambda a,b : cmp(a[1],b[1])
-    print(sorted(items, comp, reverse=False))
-    #print("\n".join(["%s : %s" % (name, year) for year, name in d]))
+    d.sort(key=itemgetter(1,0))
+    print("\n".join(["%s" % (name) for name, year in d]))
 
 if __name__ == '__main__':
     my_sort()
